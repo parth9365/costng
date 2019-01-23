@@ -2,6 +2,7 @@ import java.io.IOException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 public class APIHelper {
@@ -25,6 +26,19 @@ public class APIHelper {
 			System.out.println("\n\n-----------------------------<content>-----------------------------");
 			System.out.println(content);
 			System.out.println("-----------------------------</content>-----------------------------\n\n");
+			
+			String timestamp = jsonArray.getJSONObject(i).getString("date");
+			System.out.println("\n\n-----------------------------<timestamp>-----------------------------");
+			System.out.println(timestamp);
+			System.out.println("-----------------------------</timestamp>-----------------------------\n\n");
+			
+			Integer authorId = jsonArray.getJSONObject(i).getInt("author");
+			JSONObject authorJson = JsonReader.readJsonFromUrl("http://costng.com/wp-json/wp/v2/users/"+ authorId);
+			String author = authorJson.getString("name");
+			System.out.println("\n\n-----------------------------<author>-----------------------------");
+			System.out.println(author);
+			System.out.println("-----------------------------</author>-----------------------------\n\n");
+			
 			
 		}
 	}
