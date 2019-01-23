@@ -8,8 +8,11 @@ import org.jsoup.Jsoup;
 public class APIHelper {
 
 	public static void main(String[] args) throws IOException, JSONException {
-		JSONArray jsonArray = JsonReader.readJsonArrayFromUrl("http://costng.com/wp-json/wp/v2/posts?categories=17");
+		JSONArray jsonArray = JsonReader.readJsonArrayFromUrl("http://costng.com/wp-json/wp/v2/posts?categories=44");
 		for(int i=0; i<jsonArray.length(); i++) {
+			
+			System.out.println("======================================== POST ID: " + jsonArray.getJSONObject(i).getInt("id") + "======================================== ");
+			
 			System.out.println(jsonArray.get(i));
 
 			String imageurl = jsonArray.getJSONObject(i).getString("jetpack_featured_media_url");
